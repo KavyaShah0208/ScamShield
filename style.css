@@ -1,0 +1,204 @@
+/* ScamShield — ChatGPT-Inspired Minimalist Dark Mode */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-main: #212121;
+  --bg-surface: #2F2F2F;
+  --bg-surface-elevated: #383838;
+  --text-primary: #ECECEC;
+  --text-secondary: #B4B4B4;
+  --text-muted: #8E8E8E;
+  --border-subtle: #383838;
+  --border-active: #4F4F4F;
+  
+  /* Restrained Dark Mode Security Alert States */
+  --risk-high-text: #FF7875;
+  --risk-high-bg: #3E191A;
+  --risk-high-border: #6B2325;
+
+  --risk-med-text: #FFC069;
+  --risk-med-bg: #39260B;
+  --risk-med-border: #634213;
+
+  --risk-low-text: #73D13D;
+  --risk-low-bg: #112A1C;
+  --risk-low-border: #1E4E34;
+}
+
+/* Global Reset */
+html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
+  background-color: var(--bg-main) !important;
+  color: var(--text-primary) !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+[data-testid="stHeader"] {
+  background-color: transparent !important;
+}
+
+/* Constrain width to ChatGPT reading width */
+.main .block-container {
+  max-width: 800px !important;
+  padding-top: 2.5rem !important;
+  padding-bottom: 7rem !important;
+}
+
+/* Hide standard Streamlit header buttons */
+#MainMenu, footer {
+  visibility: hidden;
+}
+
+/* Hero Center Screen (when empty) */
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10vh;
+  margin-bottom: 3.5rem;
+}
+
+.hero-icon {
+  font-size: 2.8rem;
+  margin-bottom: 0.85rem;
+}
+
+.hero-title {
+  font-size: 2.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  line-height: 1.55;
+  margin-top: 0.65rem;
+}
+
+/* Chat Message Containers */
+[data-testid="stChatMessage"] {
+  background-color: transparent !important;
+  padding: 1.25rem 0 !important;
+  border-bottom: 1px solid #2B2B2B !important;
+}
+
+/* User Message bubble */
+.user-msg-box {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 0.85rem 1.25rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+  display: inline-block;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+/* Minimal Status Pill */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.85rem;
+}
+
+.status-pill.high-risk {
+  background-color: var(--risk-high-bg);
+  color: var(--risk-high-text);
+  border: 1px solid var(--risk-high-border);
+}
+
+.status-pill.medium-risk {
+  background-color: var(--risk-med-bg);
+  color: var(--risk-med-text);
+  border: 1px solid var(--risk-med-border);
+}
+
+.status-pill.low-risk {
+  background-color: var(--risk-low-bg);
+  color: var(--risk-low-text);
+  border: 1px solid var(--risk-low-border);
+}
+
+/* Highlighted Inspection Box in Dark Mode */
+.scamshield-highlight-box {
+  background-color: #1A1A1A;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: #ECECEC;
+  margin: 0.85rem 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Dark Mode Inline Marks */
+mark.hl-ml {
+  background-color: #4A1517 !important;
+  color: #FF7875 !important;
+  border-bottom: 2px solid #F5222D;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+mark.hl-rule {
+  background-color: #483008 !important;
+  color: #FFC069 !important;
+  border-bottom: 2px solid #FA8C16;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Sub-sections within assistant response */
+.section-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-top: 1.15rem;
+  margin-bottom: 0.45rem;
+}
+
+/* Streamlit Chat Input in Dark Mode (ChatGPT Pill) */
+[data-testid="stChatInput"] {
+  border-radius: 28px !important;
+  border: 1px solid var(--border-active) !important;
+  background-color: var(--bg-surface) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+  padding: 0.25rem 0.5rem !important;
+}
+
+[data-testid="stChatInput"]:focus-within {
+  border-color: #707070 !important;
+  background-color: #333333 !important;
+}
+
+[data-testid="stChatInput"] textarea {
+  font-size: 0.95rem !important;
+  color: #FFFFFF !important;
+}
+
+/* Clean Dark Mode Sidebar */
+[data-testid="stSidebar"] {
+  background-color: #171717 !important;
+  border-right: 1px solid var(--border-subtle) !important;
+}
+
+

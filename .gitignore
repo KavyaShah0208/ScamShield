@@ -1,0 +1,25 @@
+# Python virtual environment
+.venv/
+venv/
+ENV/
+
+# Python cache & bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Raw dataset zip archives
+data/raw/*.zip
+
+# IDE & Editor settings
+.idea/
+.vscode/
+*.swp

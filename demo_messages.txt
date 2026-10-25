@@ -1,0 +1,118 @@
+SCAMSHIELD — 10 CHALLENGING DEMO & VIVA TEST MESSAGES
+=====================================================
+
+CATEGORY A: LEGITIMATE MESSAGES WITH ALARM/TRIGGER WORDS
+(Demonstrates that the model avoids naive false positives)
+
+--------------------------------------------------------------------------------
+1. Authentic Bank 2FA Authentication Code
+--------------------------------------------------------------------------------
+Scenario: Real Chase bank two-factor authentication message.
+Why it's challenging: Contains alarm keywords like "code", "expires", and "text", but explicitly states the bank will never ask for it.
+Model Behavior: Low/moderate risk (45.5%). Avoids false high-risk alarm.
+
+Raw Text to Copy:
+Your Chase verification code is 849201. This code expires in 10 minutes. Chase will NEVER call or text to ask for this code.
+
+
+--------------------------------------------------------------------------------
+2. IT Production Server Down Alert
+--------------------------------------------------------------------------------
+Scenario: Automated DevOps server incident notification.
+Why it's challenging: Starts with "URGENT:" and discusses an emergency incident dashboard, which triggers simple keyword filters.
+Model Behavior: Contextual engineering tokens keep risk at a moderate 32.6%.
+
+Raw Text to Copy:
+URGENT: Production database server cpu threshold exceeded 95% at 14:22 UTC. Engineering on-call team please review incident dashboard.
+
+
+--------------------------------------------------------------------------------
+3. Real Credit Card Fraud Verification Check
+--------------------------------------------------------------------------------
+Scenario: Real bank fraud department SMS inquiring about an unexpected transaction.
+Why it's challenging: Contains "FreeMsg", dollar amounts, and "lock card immediately".
+Model Behavior: Recognizes legitimate alert phrasing without categorizing as an outright scam (41.5% cautious).
+
+Raw Text to Copy:
+FreeMsg: Did you attempt a charge of $84.20 at Shell Gas on card ending in 4102? Reply YES if authorized, or NO to lock card immediately.
+
+
+--------------------------------------------------------------------------------
+4. University Tuition Payment Receipt
+--------------------------------------------------------------------------------
+Scenario: Official bursar's office fee payment confirmation.
+Why it's challenging: Discusses a large money transfer ($4,250), payment processing, and download requests.
+Model Behavior: Correctly identified as clean/legitimate (20.6% risk).
+
+Raw Text to Copy:
+University Registrar: Payment of $4,250 for Spring semester tuition has been successfully processed. Download official fee receipt from student portal.
+
+
+--------------------------------------------------------------------------------
+5. Flight Delay & Gate Change Notification
+--------------------------------------------------------------------------------
+Scenario: Airline flight operations update.
+Why it's challenging: Uses words like "Alert", urgency updates, and mobile app download cues.
+Model Behavior: Correctly classified as legitimate communication (24.2% risk).
+
+Raw Text to Copy:
+United Airlines Alert: Flight UA482 to Chicago is delayed due to weather. Your new boarding time is 17:45 at Gate C12. Track baggage in the app.
+
+
+--------------------------------------------------------------------------------
+6. E-Commerce Automated Package Locker Code
+--------------------------------------------------------------------------------
+Scenario: Amazon Hub locker automated delivery notification.
+Why it's challenging: Contains a numerical access code and a retention deadline ("holds package for 3 days").
+Model Behavior: Recognized as routine transactional delivery text (17.8% risk).
+
+Raw Text to Copy:
+Amazon Hub Locker: Your package ID-91823 has arrived at Locker - Spruce. Use pickup code 482-194 on the touch screen. Locker holds package for 3 days.
+
+
+--------------------------------------------------------------------------------
+7. Corporate HR Benefits Enrollment Deadline
+--------------------------------------------------------------------------------
+Scenario: Annual healthcare benefits deadline notification from HR.
+Why it's challenging: Artificial deadline ("ends this Friday at 5 PM"), review prompts, and authority reference ("HR").
+Model Behavior: Evaluated as routine organizational communication (17.2% risk).
+
+Raw Text to Copy:
+Reminder from HR: Annual health benefits open enrollment ends this Friday at 5 PM. Review your coverage options on the company intranet portal.
+
+
+--------------------------------------------------------------------------------
+8. Medical Clinic Appointment Confirmation
+--------------------------------------------------------------------------------
+Scenario: Healthcare clinic scheduling text.
+Why it's challenging: Shortcode SMS requesting confirmation replies ("Reply 1 to confirm") and phone numbers.
+Model Behavior: Accurately classified as safe routine communication (27.5% risk).
+
+Raw Text to Copy:
+Appointment Reminder: You have a scheduled appointment with Dr. Sharma tomorrow at 10:30 AM. Reply 1 to confirm or call clinic directly.
+
+
+
+CATEGORY B: SOPHISTICATED PHISHING ATTACKS
+(Disguised as legitimate corporate/legal communications)
+
+--------------------------------------------------------------------------------
+9. Corporate Single Sign-On (SSO) Credential Harvester
+--------------------------------------------------------------------------------
+Scenario: Spear-phishing email targeting employees, formatted cleanly without spelling errors.
+Why it's challenging: Uses polished IT terminology, but directs users to a raw IP address host.
+Model Behavior: Detects authentication cues and structural URL risk (92.7% High Risk).
+
+Raw Text to Copy:
+Mandatory IT Security Notice: All employees are required to verify their multi-factor credentials before Friday at http://192.168.1.50/sso-login
+
+
+--------------------------------------------------------------------------------
+10. Fake Legal DocuSign Agreement via URL Shortener
+--------------------------------------------------------------------------------
+Scenario: Phishing email disguised as an NDA document review request.
+Why it's challenging: Professional tone; conceals malicious payload behind a public link shortener.
+Model Behavior: Catches urgency deadlines, shortener risks, and link tokens (86.1% High Risk).
+
+Raw Text to Copy:
+Please review and sign the attached 2026 Non-Disclosure Agreement. Document access expires within 24 hours at http://tinyurl.com/secure-docusign-docs
